@@ -1,0 +1,21 @@
+
+<h2>List of all users</h2>
+<div class="container-fluid">
+	
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Signed up on</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @users.each do |user| %> 
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.created_at %></td>
+    </tr>
+   <% end %>    
+  </tbody>
+ </table>
+</div>
