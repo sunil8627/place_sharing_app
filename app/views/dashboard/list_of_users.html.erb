@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">Email</th>
+      <th scope="col">Username</th>
       <th scope="col">Signed up on</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
    <% @users.each do |user| %> 
     <tr>
       <td><%= user.email %></td>
+      <td><%= link_to user.username, display_public_places_path(user.username) %></td>
       <td><%= user.created_at %></td>
     </tr>
    <% end %>    

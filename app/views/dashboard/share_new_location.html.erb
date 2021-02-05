@@ -1,0 +1,46 @@
+<%= flash[:notice] unless flash[:notice].blank? %>
+
+<h2>Share your location</h2>
+
+<%= form_tag "/create_new_location" do %>
+  
+  <div class="form-group">
+    Place : 
+    <%= text_field_tag :place %>
+  </div>
+
+  <div class="form-group">
+    Share as public:
+  	<%= check_box_tag "public" %>
+  </div>
+
+  
+
+  <div class="form-group" id="users_select">
+  <p>Or</p>
+  Select users to share with:<br />
+
+  	<%= select_tag 'selected_users', options_from_collection_for_select(@users, 'id', 'username'), { :multiple => true } %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Submit" %>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  console.log("Test");
+
+  $('#public').mousedown(function() {
+    if (!$(this).is(':checked')) {
+    	$('#users_select').hide();
+        // this.checked = confirm("Are you sure?");
+        // $(this).trigger("change");
+    }
+    else
+    {
+    	$('#users_select').show();
+    }	
+});
+</script

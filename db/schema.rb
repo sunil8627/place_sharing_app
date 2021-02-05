@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_093051) do
+ActiveRecord::Schema.define(version: 2021_02_05_122225) do
+
+  create_table "places", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_public"
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", limit: 191, default: "", null: false
@@ -20,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_093051) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
