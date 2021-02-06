@@ -1,5 +1,6 @@
 
 <h2>List of all users</h2>
+<p>Click on one of the usernames to see their public shared location map</p>
 <div class="container-fluid">
 	
  <table class="table table-bordered">
@@ -15,7 +16,7 @@
     <tr>
       <td><%= user.email %></td>
       <td><%= link_to user.username, display_public_places_path(user.username) %></td>
-      <td><%= user.created_at %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y") %></td>
     </tr>
    <% end %>    
   </tbody>

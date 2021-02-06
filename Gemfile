@@ -6,6 +6,8 @@ ruby '2.7.2'
 gem 'devise'
 gem 'pry'
 
+gem 'geocoder'
+
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 

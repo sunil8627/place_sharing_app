@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+
+  </head>
+  <body>
+    <h2><%= @title %></h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+
+      var places_coordinates = new Array();
+      places_coordinates = <%= @places_coordinates %>;
+      
+      const features = [];
+      for (i = 0; i < places_coordinates.length; i++) {
+        features.push(new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.fromLonLat([
+            places_coordinates[i][0], places_coordinates[i][1]
+          ]))
+        }));
+      }
+
+      const vectorSource = new ol.source.Vector({
+        features
+      });
+      const vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style: new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 2,
+            fill: new ol.style.Fill({color: 'red'})
+          })
+        })
+      });
+
+      const map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          }),
+          vectorLayer
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-75, 35]),
+          zoom: 2
+        })
+      });
+    </script>
+
+    <br />
+
+     <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Place</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">Latitude</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @places.each do |place| %> 
+        <tr>
+          <td><%= place.place %></td>
+          <td><%= place.longitude %></td>
+          <td><%= place.latitude %></td>
+        </tr>
+       <% end %>    
+      </tbody>
+     </table>
+
+  </body>
+</html>
