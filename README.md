@@ -1,24 +1,22 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Visit the deployed version on heroku - https://place-sharing-sunil.herokuapp.com/
 
-Things you may want to cover:
+Seed data for users and locations in db/seeds.rb 
 
-* Ruby version
+Steps to install and run the app locally - 
 
-* System dependencies
+git clone https://github.com/sunil8627/place_sharing_app.git
 
-* Configuration
+cd place_sharing_app
 
-* Database creation
+bundle install
 
-* Database initialization
+rake db:create
 
-* How to run the test suite
+rake db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+rake db:seed
 
-* Deployment instructions
+Start the server - rails s
 
-* ...
+Go to http://localhost:3000/
