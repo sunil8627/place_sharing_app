@@ -1,6 +1,8 @@
 
 Visit the deployed version on heroku - https://place-sharing-sunil.herokuapp.com/
 
+Log in with - user1@test.com / 123456 or user2@test.com / 123456 or user3@test.com / 123456
+
 Seed data for users and locations in db/seeds.rb 
 
 Steps to install and run the app locally - 
